@@ -1,5 +1,3 @@
-import sys
-import os
 import flask
 import yaml
 
@@ -20,21 +18,23 @@ class Person(object):
         self.name = name
 
 
+# Text
 def print_nametag(format_string, person):
     print(format_string.format(person=person))
 
-"""Some documentation gere"""
 
-def fetch_website(urllib_version, url):
+# Documentation
+def fetch_website(urllibVersion, url):
     # Import the requested version (2 or 3) of urllib
     exec(f"import urllib{urllib_version} as urllib", globals())
     # Fetch and print the requested URL
 
     try:
-        http = urlib_version.PoolManager()
-        r = http.request('GET', url)
-    except:
+        http = urlibVersion.PoolManager()
+        http.request('GET', url)
+    except Exception:
         print('Exception')
+
 
 # Some doc shlould be here
 def load_yaml(filename):
@@ -42,10 +42,13 @@ def load_yaml(filename):
     deserialized_data = yaml.load(stream, Loader=yaml.Loader)  #deserializing data
     return deserialized_data
 
+
+# Text
 def authenticate(password):
     # Assert that the password is correct
     assert password == "Iloveyou", "Invalid password!"
     print("Successfully authenticated!")
+
 
 if __name__ == '__main__':
     print("Vulnerabilities:")
@@ -58,8 +61,8 @@ if __name__ == '__main__':
         newPerson = Person("Vickie")
         print_nametag(input("Please format your nametag: "), newPerson)
     elif choice == "2":
-        urlib_version = input("Choose version of urllib: ")
-        fetch_website(urlib_version, url="https://www.google.com")
+        urlibVersion = input("Choose version of urllib: ")
+        fetch_website(urlibVersion, url="https://www.google.com")
     elif choice == "3":
         load_yaml(input("File name: "))
         print("Executed -ls on current folder")
