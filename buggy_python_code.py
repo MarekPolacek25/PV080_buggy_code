@@ -1,7 +1,8 @@
-import sys 
+import sys
 import os
-import yaml
 import flask
+import yaml
+
 
 app = flask.Flask(__name__)
 
@@ -22,24 +23,25 @@ class Person(object):
 def print_nametag(format_string, person):
     print(format_string.format(person=person))
 
+"""Some documentation gere"""
 
 def fetch_website(urllib_version, url):
     # Import the requested version (2 or 3) of urllib
     exec(f"import urllib{urllib_version} as urllib", globals())
     # Fetch and print the requested URL
 
-    try: 
+    try:
         http = urlib_version.PoolManager()
         r = http.request('GET', url)
     except:
         print('Exception')
 
-
+# Some doc shlould be here
 def load_yaml(filename):
     stream = open(filename)
-    deserialized_data = yaml.load(stream, Loader=yaml.Loader) #deserializing data
+    deserialized_data = yaml.load(stream, Loader=yaml.Loader)  #deserializing data
     return deserialized_data
-    
+
 def authenticate(password):
     # Assert that the password is correct
     assert password == "Iloveyou", "Invalid password!"
@@ -51,10 +53,10 @@ if __name__ == '__main__':
     print("2. Code injection vulnerability:")
     print("3. Yaml deserialization vulnerability:")
     print("4. Use of assert statements vulnerability:")
-    choice  = input("Select vulnerability: ")
+    choice = input("Select vulnerability: ")
     if choice == "1":
-        new_person = Person("Vickie")
-        print_nametag(input("Please format your nametag: "), new_person)
+        newPerson = Person("Vickie")
+        print_nametag(input("Please format your nametag: "), newPerson)
     elif choice == "2":
         urlib_version = input("Choose version of urllib: ")
         fetch_website(urlib_version, url="https://www.google.com")
